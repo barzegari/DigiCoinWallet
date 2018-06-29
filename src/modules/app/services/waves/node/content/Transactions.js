@@ -165,7 +165,7 @@
                             tx.amount = tx.transfers
                                 .filter(({ recipient }) => recipient === user.address || list.indexOf(recipient) !== -1)
                                 .map(({ amount }) => amount)
-                                .reduce((acc, val) => acc.add(val));
+                                .reduce((acc, val) => acc.add(val), { add: (val) => val });
                             break;
                         default:
                             break;
