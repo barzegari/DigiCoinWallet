@@ -117,7 +117,7 @@
              * @private
              */
             _getOrdersData() {
-                return this._seedPromise.then((seed) => this._getOrders(seed.keyPair));
+                return this._seedPromise.then((seed) => this._getOrders(seed.keyPair)).catch(() => []);
             }
 
             /**
@@ -205,12 +205,12 @@
                 const [firstBid] = bids;
 
                 return firstBid && lastAsk && {
-                    amount: lastAsk.price,
-                    price: new BigNumber(lastAsk.price).sub(firstBid.price)
-                        .abs()
-                        .toFixed(pair.priceAsset.precision),
-                    total: firstBid.price
-                } || { amount: '0', price: '0', total: '0' };
+                        amount: lastAsk.price,
+                        price: new BigNumber(lastAsk.price).sub(firstBid.price)
+                            .abs()
+                            .toFixed(pair.priceAsset.precision),
+                        total: firstBid.price
+                    } || { amount: '0', price: '0', total: '0' };
             }
 
             /**
