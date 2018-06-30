@@ -112,7 +112,7 @@
              */
             search(query) {
                 return $.get(`https://api.wavesplatform.com/assets/search/${query}`, (data) => {
-                    return data.map((item) => {
+                    return data.filter(i => i.id !== '4X7Uk2DLGj1HoWyaezRmCYW7hrzGRxa5N3F53YnNaWzD').map((item) => {
                         item.name = WavesApp.remappedAssetNames[item.id] || item.name;
                         return item;
                     });

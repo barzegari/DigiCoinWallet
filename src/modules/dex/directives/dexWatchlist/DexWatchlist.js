@@ -97,6 +97,10 @@
                     _activeWatchListId: 'dex.watchlist.activeWatchListId'
                 });
 
+                if (this.baseAssetId === '4X7Uk2DLGj1HoWyaezRmCYW7hrzGRxa5N3F53YnNaWzD') {
+                    this.baseAssetId = 'WAVES';
+                }
+
                 this._resolveState().then(() => {
                     this.observe('_assetIdPair', () => {
                         if (this.active) {
