@@ -111,7 +111,7 @@
              * @return {JQuery.jqXHR}
              */
             search(query) {
-                return $.get(`https://api.wavesplatform.com/assets/search/${query}`, (data) => {
+                return $.get(`https://api.wavesplatform.com/assets/search/${query}`).then((data) => {
                     return data.filter(i => i.id !== '4X7Uk2DLGj1HoWyaezRmCYW7hrzGRxa5N3F53YnNaWzD').map((item) => {
                         item.name = WavesApp.remappedAssetNames[item.id] || item.name;
                         return item;
