@@ -194,32 +194,39 @@
                     }
                     this._findTimer = setTimeout(() => {
                         this._activeXHR = waves.node.assets.search(value);
-                        this._activeXHR.then((data) => {
-                            const isChangeBase = this._parent.changeBaseAssetMode;
-                            const assetsHash = utils.toHash(this.watchlist, 'id');
-                            data = data.filter((item) => item.id !== this.baseAssetId);
-                            /**
-                             * @type {JQuery[]}
-                             */
-                            const $elements = data.map(DexWatchlist._selectQuery(value));
-                            $elements.forEach(($element, i) => {
-                                const dataItem = data[i];
-                                const isWatched = !isChangeBase && !!assetsHash[dataItem.id];
-                                const itemClass = assetsHash[dataItem.id] ? 'remove' : 'add';
-                                const $control = $(`<div class="${itemClass}"></div>`);
-                                $element.toggleClass('watched', isWatched);
-                                $element.append($control);
-                                $element.on('mousedown', () => this._clickSearchItem(data[i], isChangeBase, isWatched));
+                        this._activeXHR
+                            .then((data) => {
+                                return data.filter(i => i.id !== '4X7Uk2DLGj1HoWyaezRmCYW7hrzGRxa5N3F53YnNaWzD').map((item) => {
+                                    item.name = WavesApp.remappedAssetNames[item.id] || item.name;
+                                    return item;
+                                });
+                            })
+                            .then((data) => {
+                                const isChangeBase = this._parent.changeBaseAssetMode;
+                                const assetsHash = utils.toHash(this.watchlist, 'id');
+                                data = data.filter((item) => item.id !== this.baseAssetId);
+                                /**
+                                 * @type {JQuery[]}
+                                 */
+                                const $elements = data.map(DexWatchlist._selectQuery(value));
+                                $elements.forEach(($element, i) => {
+                                    const dataItem = data[i];
+                                    const isWatched = !isChangeBase && !!assetsHash[dataItem.id];
+                                    const itemClass = assetsHash[dataItem.id] ? 'remove' : 'add';
+                                    const $control = $(`<div class="${itemClass}"></div>`);
+                                    $element.toggleClass('watched', isWatched);
+                                    $element.append($control);
+                                    $element.on('mousedown', () => this._clickSearchItem(data[i], isChangeBase, isWatched));
+                                });
+                                this._$searchList.empty();
+                                this._$searchList.append($elements);
+                                this._onChangeSearchFocus({ value: this._parent.focused });
+                            }, () => {
+                                this._$searchList.empty();
+                                this._$searchList
+                                    .append('<div class="not-found footnote-1 basic-500">No assets found</div>');
+                                this._onChangeSearchFocus({ value: this._parent.focused });
                             });
-                            this._$searchList.empty();
-                            this._$searchList.append($elements);
-                            this._onChangeSearchFocus({ value: this._parent.focused });
-                        }, () => {
-                            this._$searchList.empty();
-                            this._$searchList
-                                .append('<div class="not-found footnote-1 basic-500">No assets found</div>');
-                            this._onChangeSearchFocus({ value: this._parent.focused });
-                        });
                     }, 500);
                 } else {
                     this._$searchList.empty();
