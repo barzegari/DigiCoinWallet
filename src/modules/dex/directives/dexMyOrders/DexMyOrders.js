@@ -60,7 +60,7 @@
              */
             _getOrders() {
                 return user.getSeed()
-                    .then((seed) => waves.matcher.getOrders(seed.keyPair))
+                    .then((seed) => waves.matcher.getOrdersByPair(seed.keyPair, this._assetIdPair.amount, this._assetIdPair.price))
                     .then((orders) => {
                         const active = [];
                         const others = [];

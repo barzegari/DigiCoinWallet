@@ -59,6 +59,16 @@
             /**
              * @param keyPair
              * @returns {Promise<any>}
+             */
+            getOrdersByPair(keyPair, asset1, asset2) {
+                return Waves.API.Matcher.v1.getOrders(asset1, asset2, keyPair)
+                    .then((list) => list.map(Matcher._remapOrder))
+                    .then(utils.whenAll);
+            }
+
+            /**
+             * @param keyPair
+             * @returns {Promise<any>}
              * @private
              */
             _getOrders(keyPair) {
