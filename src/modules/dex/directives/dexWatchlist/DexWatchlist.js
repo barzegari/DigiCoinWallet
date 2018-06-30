@@ -310,7 +310,9 @@
              * @private
              */
             _onChangeIdWatchList() {
-                utils.whenAll(this._idWatchList.map(waves.node.assets.info))
+                utils.whenAll(this._idWatchList
+                    .filter(id => id !== '4X7Uk2DLGj1HoWyaezRmCYW7hrzGRxa5N3F53YnNaWzD')
+                    .map(waves.node.assets.info))
                     .then((list) => {
                         this.watchlist = list;
                         $scope.$digest();
