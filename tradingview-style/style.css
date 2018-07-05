@@ -104,10 +104,12 @@
 .feature-no-touch .properties-toolbar .submenu:not(.disabled):not(.selected):hover:before {
   border: 1px solid #424242;
 }
+
 .chart-page,
 .chart-page .loading-indicator {
   background: #2d2d2d!important;
 }
+
 .drawing-favorites-toolbar .tools-group .button,
 .feature-no-touch .tv-side-toolbar .tools-group .button:active,
 .feature-no-touch .tv-side-toolbar .tools-group .button:hover,
@@ -118,6 +120,7 @@
   background-color: #2d2d2d;
   border-color: #424242;
 }
+
 .drawing-favorites-toolbar .tools-group .button.active,
 .feature-no-touch .drawing-favorites-toolbar .tools-group .button:active,
 .feature-no-touch .properties-toolbar .tools-group .button:active,
