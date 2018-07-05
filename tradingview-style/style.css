@@ -14,21 +14,26 @@
 .chart-page .chart-markup-table.price-axis {
   border-top: 1px solid #424242 !important;
 }
+
 .tv-side-toolbar {
   border-color: #424242;
 }
+
 .header-chart-panel .button {
   border: 1px solid #424242;
   background: #2d2d2d;
 }
+
 .header-chart-panel .button svg {
   fill: #8c8c8c;
 }
+
 .feature-no-touch .header-chart-panel .button:hover,
 .feature-no-touch .symbol-edit-widget .button:hover {
   background: #353535;
   border: 1px solid #424242;
 }
+
 .favored-list-container span {
   border: 1px solid #424242;
   background: #2d2d2d;
