@@ -1,8 +1,7 @@
-# Waves Client (beta version)
+# DigiCoin Wallet (beta version)
 
-The new client is available here and at [beta.wavesplatform.com](https://beta.wavesplatform.com/).
+The first version of digicoin is available here and at [wallet.mrdigicoin.eu](https://wallet.mrdigicoin.eu/).
 
-The old stable client is available at [waveswallet.io](https://waveswallet.io/) and on branch [old-client](https://github.com/wavesplatform/WavesGUI/tree/old-client).
 
 ## Setup
 
